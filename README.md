@@ -16,6 +16,5 @@ Matching Game, also known as the Concentration card game or Memory Game, is a si
 
 **finding matches:**
 
-![screencapture-malihakabir-github-io-matching-game-2020-07-24-22_09_15](https://user-images.githubusercontent.com/43598622/88412009-b9be5c80-cdfa-11ea-95d4-fb6df88b13aa.jpg)
-
 ![screencapture-malihakabir-github-io-matching-game-2020-07-24-22_08_57](https://user-images.githubusercontent.com/43598622/88412030-c2169780-cdfa-11ea-8a59-2e1cef68dc23.jpg)
+![screencapture-malihakabir-github-io-matching-game-2020-07-24-22_09_15](https://user-images.githubusercontent.com/43598622/88412009-b9be5c80-cdfa-11ea-95d4-fb6df88b13aa.jpg)
