@@ -1,118 +1,116 @@
 document.addEventListener('DOMContentLoaded', () => {
 	// select DOMS:
-	const result = document.querySelector('#result');
 	const winDeclare = document.querySelector('h2');
 	const grid = document.querySelector('.grid');
-	let chosenCard = [];
-	let chosenCardId = [];
+	let result = document.querySelector('#result');
+	let chosenCards = [];
+	let chosenCardsId = [];
 	let winningCards = [];
 	// all card options:
 	const cardArray = [
 		{
-			name : 'cheeseburger',
-			img  : 'images/cheeseburger.png',
+			name    : 'cheeseburger',
+			imgCard : 'images/cheeseburger.png',
 		},
 		{
-			name : 'fries',
-			img  : 'images/fries.png',
+			name    : 'fries',
+			imgCard : 'images/fries.png',
 		},
 		{
-			name : 'hotdog',
-			img  : 'images/hotdog.png',
+			name    : 'hotdog',
+			imgCard : 'images/hotdog.png',
 		},
 		{
-			name : 'ice-cream',
-			img  : 'images/ice-cream.png',
+			name    : 'ice-cream',
+			imgCard : 'images/ice-cream.png',
 		},
 		{
-			name : 'pizza',
-			img  : 'images/pizza.png',
+			name    : 'milkshake',
+			imgCard : 'images/milkshake.png',
 		},
 		{
-			name : 'milkshake',
-			img  : 'images/milkshake.png',
+			name    : 'pizza',
+			imgCard : 'images/pizza.png',
 		},
 		{
-			name : 'cheeseburger',
-			img  : 'images/cheeseburger.png',
+			name    : 'cheeseburger',
+			imgCard : 'images/cheeseburger.png',
 		},
 		{
-			name : 'fries',
-			img  : 'images/fries.png',
+			name    : 'fries',
+			imgCard : 'images/fries.png',
 		},
 		{
-			name : 'hotdog',
-			img  : 'images/hotdog.png',
+			name    : 'hotdog',
+			imgCard : 'images/hotdog.png',
 		},
 		{
-			name : 'ice-cream',
-			img  : 'images/ice-cream.png',
+			name    : 'ice-cream',
+			imgCard : 'images/ice-cream.png',
 		},
 		{
-			name : 'pizza',
-			img  : 'images/pizza.png',
+			name    : 'milkshake',
+			imgCard : 'images/milkshake.png',
 		},
 		{
-			name : 'milkshake',
-			img  : 'images/milkshake.png',
+			name    : 'pizza',
+			imgCard : 'images/pizza.png',
 		},
 	];
 
 	// sorts the cardArray randomly for each time
-	cardArray.sort(() => 1 - Math.floor(Math.random() * cardArray.length - 1));
+	cardArray.sort(() => 1 - Math.floor(Math.random() * cardArray.length));
 
 	// creates game board using cover image
-	function showCoverImg () {
+	function createImgCard () {
 		for (let i = 0; i < cardArray.length; i++) {
-			const coverImg = document.createElement('img');
+			let imgTag = document.createElement('img');
 
-			coverImg.src = 'images/coverImg.jpg';
-			coverImg.setAttribute('data-id', i);
+			imgTag.src = 'images/coverImg.jpg';
+			imgTag.setAttribute('data-id', i);
 
-			grid.appendChild(coverImg);
-			coverImg.addEventListener('click', flipCard);
+			grid.appendChild(imgTag);
+
+			imgTag.addEventListener('click', flipCard);
 		}
 	}
 
 	// flips the card that is being clicked
 	function flipCard () {
-		let imgId = this.getAttribute('data-id');
-		this.src = cardArray[imgId].img;
+		let imgTagId = this.getAttribute('data-id');
 
-		chosenCard.push(cardArray[imgId].name);
-		chosenCardId.push(imgId);
+		chosenCards.push(cardArray[imgTagId].name);
+		chosenCardsId.push(imgTagId);
 
-		if (chosenCard.length === 2) {
+		this.src = `${cardArray[imgTagId].imgCard}`;
+
+		if (chosenCards.length === 2) {
 			setTimeout(checkForMatch, 500);
 		}
 	}
 
 	// checks whether selecting cards matches or not
 	function checkForMatch () {
-		let cardIdOne = chosenCardId[0];
-		let cardIdTwo = chosenCardId[1];
-		const imgFromDOM = document.querySelectorAll('img');
-		if (chosenCard[0] === chosenCard[1]) {
-			imgFromDOM[cardIdOne].src = 'images/blank.png';
-			imgFromDOM[cardIdTwo].src = 'images/blank.png';
-			imgFromDOM[cardIdOne].removeEventListener('click', flipCard);
-			imgFromDOM[cardIdTwo].removeEventListener('click', flipCard);
-			winningCards.push(chosenCard);
+		const allImages = document.querySelectorAll('img');
+		const chosenCardsIdOne = chosenCardsId[0];
+		const chosenCardsIdTwo = chosenCardsId[1];
+		if (chosenCards[0] === chosenCards[1]) {
+			allImages[chosenCardsIdOne].src = 'images/blank.png';
+			allImages[chosenCardsIdTwo].src = 'images/blank.png';
+			allImages[chosenCardsIdOne].removeEventListener('click', flipCard);
+			allImages[chosenCardsIdTwo].removeEventListener('click', flipCard);
+			winningCards.push(chosenCards);
 			result.textContent = winningCards.length * 10;
 		} else {
-			imgFromDOM[cardIdOne].src = 'images/coverImg.jpg';
-			imgFromDOM[cardIdTwo].src = 'images/coverImg.jpg';
-			alert('Not matched! Try again!');
+			allImages[chosenCardsIdOne].src = 'images/coverImg.jpg';
+			allImages[chosenCardsIdTwo].src = 'images/coverImg.jpg';
+			alert('Not Matched! Try Again!');
 		}
-
-		// make these arrays empty again
-		chosenCard = [];
-		chosenCardId = [];
-
+		chosenCards = [];
+		chosenCardsId = [];
 		if (winningCards.length === cardArray.length / 2) {
 			winDeclare.textContent = "Congratulations! You've won the game!";
 		}
 	}
-
-	showCoverImg();
+	createImgCard();
 });
