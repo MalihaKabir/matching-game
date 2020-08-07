@@ -10,51 +10,51 @@ document.addEventListener('DOMContentLoaded', () => {
 	const cardArray = [
 		{
 			name : 'cheeseburger',
-			img  : '/images/cheeseburger.png',
+			img  : 'images/cheeseburger.png',
 		},
 		{
 			name : 'fries',
-			img  : '/images/fries.png',
+			img  : 'images/fries.png',
 		},
 		{
 			name : 'hotdog',
-			img  : '/images/hotdog.png',
+			img  : 'images/hotdog.png',
 		},
 		{
 			name : 'ice-cream',
-			img  : '/images/ice-cream.png',
+			img  : 'images/ice-cream.png',
 		},
 		{
 			name : 'pizza',
-			img  : '/images/pizza.png',
+			img  : 'images/pizza.png',
 		},
 		{
 			name : 'milkshake',
-			img  : '/images/milkshake.png',
+			img  : 'images/milkshake.png',
 		},
 		{
 			name : 'cheeseburger',
-			img  : '/images/cheeseburger.png',
+			img  : 'images/cheeseburger.png',
 		},
 		{
 			name : 'fries',
-			img  : '/images/fries.png',
+			img  : 'images/fries.png',
 		},
 		{
 			name : 'hotdog',
-			img  : '/images/hotdog.png',
+			img  : 'images/hotdog.png',
 		},
 		{
 			name : 'ice-cream',
-			img  : '/images/ice-cream.png',
+			img  : 'images/ice-cream.png',
 		},
 		{
 			name : 'pizza',
-			img  : '/images/pizza.png',
+			img  : 'images/pizza.png',
 		},
 		{
 			name : 'milkshake',
-			img  : '/images/milkshake.png',
+			img  : 'images/milkshake.png',
 		},
 	];
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		for (let i = 0; i < cardArray.length; i++) {
 			const coverImg = document.createElement('img');
 
-			coverImg.src = '/images/coverImg.jpg';
+			coverImg.src = 'images/coverImg.jpg';
 			coverImg.setAttribute('data-id', i);
 
 			grid.appendChild(coverImg);
@@ -93,15 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		let cardIdTwo = chosenCardId[1];
 		const imgFromDOM = document.querySelectorAll('img');
 		if (chosenCard[0] === chosenCard[1]) {
-			imgFromDOM[cardIdOne].src = '/images/blank.png';
-			imgFromDOM[cardIdTwo].src = '/images/blank.png';
+			imgFromDOM[cardIdOne].src = 'images/blank.png';
+			imgFromDOM[cardIdTwo].src = 'images/blank.png';
 			imgFromDOM[cardIdOne].removeEventListener('click', flipCard);
 			imgFromDOM[cardIdTwo].removeEventListener('click', flipCard);
 			winningCards.push(chosenCard);
 			result.textContent = winningCards.length * 10;
 		} else {
-			imgFromDOM[cardIdOne].src = '/images/coverImg.jpg';
-			imgFromDOM[cardIdTwo].src = '/images/coverImg.jpg';
+			imgFromDOM[cardIdOne].src = 'images/coverImg.jpg';
+			imgFromDOM[cardIdTwo].src = 'images/coverImg.jpg';
 			alert('Not matched! Try again!');
 		}
 
